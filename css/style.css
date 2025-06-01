@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Mono&display=swap');
+
+/* === Video Background === */
+#bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.7) sepia(0.25) contrast(1);
+}
+
+/* Dark overlay above video for text readability */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 14, 7, 0.6);
+  z-index: -1;
+}
+
+/* === Global Body Styling === */
+body {
+  font-family: 'Playfair Display', serif;
+  color: #5e4b2a; /* warm brown text */
+  margin: 40px auto;
+  max-width: 900px;
+  line-height: 1.8;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+  background: none;
+}
+
+/* === Navigation === */
+nav {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: 'Roboto Mono', monospace;
+  background: rgba(102, 76, 19, 0.85); /* deep warm brown */
+  padding: 15px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(102, 76, 19, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+nav a {
+  color: #f9d56e; /* warm gold */
+  text-decoration: none;
+  margin: 0 16px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px 3px rgba(77, 56, 13, 0.8);
+}
+
+nav a:hover {
+  border-bottom: 2px solid #f9d56e;
+  color: #f9d56e;
+}
+
+.site-header {
+  background-color: rgba(102, 76, 19, 0.85); /* deep warm brown */
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(102, 76, 19, 0.8);
+  position: relative;
+  z-index: 3;
+  margin-bottom: 30px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: #f9d56e; /* warm gold */
+  text-shadow: 1px 1px 3px rgba(77, 56, 13, 0.8);
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #806f5a; /* muted warm brown */
+  margin-top: 50px;
+  font-style: italic;
+  text-shadow: 1px 1px 3px rgba(102, 76, 19, 0.3);
+  padding-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* === Main Content === */
+main {
+  max-width: 900px;
+  background: rgba(255, 250, 220, 0.85); /* soft warm cream/yellow */
+  padding: 40px 50px;
+  margin: 30px auto;
+  border-radius: 25px;
+  box-shadow: 0 15px 30px rgba(166, 124, 82, 0.3);
+  color: #5e4b2a; /* warm brown */
+  text-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* === Headers and Intro Text === */
+header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  letter-spacing: 0.1em;
+  color: #5e4b2a; /* warm brown */
+  text-shadow: none;
+  text-align: center;
+}
+
+/* Centered page titles in main */
+main h2 {
+  text-align: center;
+  color: #a67c52; /* golden brown */
+  text-shadow: none;
+  margin-bottom: 25px;
+  font-size: 2.5rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.intro {
+  font-size: 1.4rem;
+  max-width: 720px;
+  margin: 0 auto 10px auto;
+  font-style: italic;
+  color: #7c693f;
+  text-shadow: none;
+  text-align: center;
+}
+
+blockquote {
+  text-align: center;
+  font-style: italic;
+  color: #5e4b2a;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+
+/* === Step-by-step page styles (Scoped to body.step-page) === */
+body.step-page .game-map {
+  position: relative;
+  max-width: 700px;
+  margin: 50px auto 80px auto;
+  padding-left: 50px;
+  border-left: 4px solid #a67c52; /* golden brown */
+}
+
+body.step-page .path-line {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  width: 8px;
+  height: calc(100% - 40px);
+  background: linear-gradient(to bottom, #f9d56e, #a67c52);
+  border-radius: 4px;
+  z-index: 1;
+  box-shadow: 0 0 10px #f9d56e88;
+}
+
+body.step-page .step {
+  position: relative;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  z-index: 2;
+  opacity: 1;
+}
+
+body.step-page .step.unlocked .icon {
+  background: #a67c52;
+  color: #fff;
+  box-shadow: 0 0 12px #f9d56e;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+body.step-page .step.unlocked .icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px #fff27a;
+}
+
+body.step-page .step.unlocked .label h3 {
+  color: #a67c52;
+  text-shadow: none;
+}
+
+body.step-page .step.unlocked .label p {
+  color: #5e4b2a;
+  font-style: italic;
+  text-shadow: none;
+}
+
+body.step-page .step.locked .icon {
+  filter: grayscale(40%);
+  background: #8b6f43;
+  box-shadow: none;
+  cursor: default;
+  transition: filter 0.3s ease;
+}
+
+body.step-page .step.locked .icon:hover {
+  filter: grayscale(30%);
+}
+
+body.step-page .step.locked .label h3,
+body.step-page .step.locked .label p {
+  color: #a59775;
+  text-shadow: none;
+}
+
+body.step-page .step.locked .label::after {
+  content: 'Not achieved yet';
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 8px;
+  background: #b37d2d;
+  color: #fff8d6;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'Roboto Mono', monospace;
+  border-radius: 12px;
+  box-shadow: 0 0 8px #b37d2daa;
+  text-transform: uppercase;
+}
+
+body.step-page .step .icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -58px;
+}
+
+body.step-page .step .label {
+  flex: 1;
+}
+
+body.step-page .step .label h3 {
+  margin: 0 0 6px 0;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+body.step-page .step .label p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* === Homepage and Resources pages (Scoped to body:not(.step-page)) === */
+
+/* Homepage hero image and content summary */
+body:not(.step-page) main .hero-image img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(166, 124, 82, 0.4);
+  margin: 0 auto;
+  display: block;
+}
+
+body:not(.step-page) main .content-summary {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #5e4b2a;
+  text-shadow: none;
+  text-align: center;
+}
+
+body:not(.step-page) main .content-summary h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #a67c52;
+  text-shadow: none;
+  text-align: center;
+}
+
+/* Table Styles for Inspiration page */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255, 250, 220, 0.85); /* soft warm cream/yellow */
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 1.5rem;
+  color: #5e4b2a;
+  box-shadow: 0 4px 15px rgba(166, 124, 82, 0.15);
+}
+
+thead {
+  background-color: rgba(249, 213, 110, 0.85); /* warm golden yellow */
+}
+
+thead th {
+  padding: 12px 15px;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: left;
+  border-bottom: 3px solid #a67c52;
+  color: #3a2e15;
+  text-shadow: none;
+}
+
+tbody td {
+  padding: 12px 15px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(166, 124, 82, 0.3);
+  color: #5e4b2a;
+  background-color: rgba(255, 250, 220, 0.8);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: rgba(249, 213, 110, 0.35); /* subtle warm highlight */
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+tbody td div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a {
+  color: #a67c52;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #f9d56e;
+  text-decoration: none;
+}
+
+
